@@ -6,7 +6,9 @@ SurveyAppClient.controller('MainController',[
 	'MainFactory',
 
 	function ($http, $scope, MainFactory) {
-		$scope.survey = MainFactory.getsurvey();
-		console.log($scope.survey);
+		MainFactory.getsurvey().success(function (surv) {
+				console.log(surv);
+				$scope.survey = surv;
+			});;
 	}
 ]);
