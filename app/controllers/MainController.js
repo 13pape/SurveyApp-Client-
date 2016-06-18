@@ -8,7 +8,7 @@ SurveyAppClient.controller('MainController',[
 	function ($http, $scope, MainFactory) {
 		MainFactory.getsurvey().success(function (surv) {
 				console.log(surv);
-				$scope.survey = surv;
+				$scope.questions = surv[0].QuestionList;
 			});;
 	}
 ]);

@@ -1,9 +1,18 @@
-<div ng-repeat="item in survey">
+<!--<div ng-repeat="item in survey">
 	<div>
 		<div>{{ item.QuestionList[0]}}</div>
 		
-		<!--<div> {{ item.QuestionList.AnswerList.AnswerText }}</div>-->		
+		<!--<div> {{ item.QuestionList.AnswerList.AnswerText }}</div>		
 	</div>
+</div>-->
+
+<div ng-repeat="question in questions">
+
+	<div class="question">{{ question.QuestionText}}
+     <div ng-repeat="answer in question.AnswerList">
+               {{answer.AnswerText}}
+          </div>
+     </div>
 </div>
 
 
