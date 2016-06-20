@@ -25,28 +25,33 @@ SurveyAppClient.controller('MainController',[
 			var selectedAgeId = $('input:checked', '#optionsRadiosAge')[0].value;
 			console.log('AgeId:', selectedAgeId);
 
+
 			var answerObject = {
 				SexId: selectedSexId,
 				AgeId: selectedAgeId,
-				SurveyUserId: -1
+				SurveyUserId: []
 			}
-			for (var i=0; i<$scope.questions.length; i++)
-			{
+
+			for (var i=0; i<$scope.questions.length; i++){
 				var questionId = $scope.questions[i].QuestionId;
-				var answerId = (radioAnswer + questionId).checked.AnswerId;
-				answerObject.UserAnswerList.add(
-					{ 
-						QuestionId: questionId,
-						AnswerId: answerId,
-						SurveyUserId: -1
-					 });
+				var selectedAnswerId = $('input:checked', `#radioAnswer${questionId}`)[0].value;
+				// console.log(questionId, parseInt(selectedAnswerId));
+				var obj = {
+							QuestionId: questionId, 
+							SelectedAnswerId: parseInt(selectedAnswerId)
+						}
+
+				answerObject.SurveyUserId.push(obj);
 			}
-			console.log("saving answers");
+			
+			console.log(answerObject);
+			
+
 			// POST api connection 
       		$http({
 				url:'http://localhost:50797/api/survey',
 				method: 'POST',
-				data: JSON.stringify($scope.saveAnswers)
+				data: JSON.stringify(answerObject)
 			});
 			/* 
 			answerObject = {
