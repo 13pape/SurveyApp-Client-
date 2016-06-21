@@ -29,7 +29,7 @@ SurveyAppClient.controller('MainController',[
 			var answerObject = {
 				SexId: selectedSexId,
 				AgeId: selectedAgeId,
-				SurveyUserId: []
+				UserAnswerList: []
 			}
 
 			for (var i=0; i<$scope.questions.length; i++){
@@ -37,11 +37,10 @@ SurveyAppClient.controller('MainController',[
 				var selectedAnswerId = $('input:checked', `#radioAnswer${questionId}`)[0].value;
 				// console.log(questionId, parseInt(selectedAnswerId));
 				var obj = {
-							QuestionId: questionId, 
-							SelectedAnswerId: parseInt(selectedAnswerId)
+							AnswerId: parseInt(selectedAnswerId)
 						}
 
-				answerObject.SurveyUserId.push(obj);
+				answerObject.UserAnswerList.push(obj);
 			}
 			
 			console.log(answerObject);
@@ -51,7 +50,9 @@ SurveyAppClient.controller('MainController',[
       		$http({
 				url:'http://localhost:50797/api/survey',
 				method: 'POST',
-				data: JSON.stringify(answerObject)
+				data: answerObject,
+				dataType: JSON,
+				contentType: 'application/json; charset=utf-8'
 			});
 			/* 
 			answerObject = {

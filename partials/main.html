@@ -9,19 +9,24 @@
 </div>-->
 <body>
 	<div class="container">
-		<div class="row">  What is your age?
-			<form id="optionsRadiosAge">
+	<div class="well bs-component">
+		<h3>What is your age?</h3>
+		<div class="row">
+			<form id="optionsRadiosAge" class="form-horizontal">
+			<fieldset>
 				<div class="radio col-sm-6 col-md-4" ng-repeat="age in ages"> 
 					<label class="thumbnail">
 						 <input type="radio" name="optionsRadios" value="{{age.AgeId}}" checked>
 							{{age.Display}}
 					</label>  
 				</div>
+			</fieldset>
 			</form>
 		</div>
 		
-		<div class="row"> What is your gender identity?
-			<form id="optionsRadiosSex">
+		<h3>What is your gender identity?</h3>
+		<div class="row">
+			<form id="optionsRadiosSex" class="form-horizontal">
 				<div class="radio col-sm-6 col-md-4" ng-repeat="sex in sexes">
 					<label class="thumbnail">
 						 <input type="radio" name="optionsRadios" value=" {{sex.SexId}}" checked>
@@ -30,15 +35,16 @@
 				</div>
 			</form>  
 		</div>
+	</div>
 
 
-
+	<div class="well bs-component">
 		<div class="row" ng-repeat="question in questions">
-			<div class="col-sm-12">{{ question.QuestionId }} {{ question.QuestionText}}
+			<div class="col-lg-6 control-label"><h4>{{ question.QuestionId }} {{ question.QuestionText}}</h4>
 				<div>
-					<form id="radioAnswer{{question.QuestionId}}">
+					<form id="radioAnswer{{question.QuestionId}}" class="form-horizontal">
     					<div ng-repeat="answer in question.AnswerList">
-            				<div class="radio col-sm-6 col-md-4">
+            				<div class="radio col-sm-6 col-md-6">
 			 					<label class="thumbnail">
 			  						<input type="radio" name="radioAnswers"  value="{{ answer.AnswerId }}" checked>
 			   							{{ answer.AnswerId}} {{answer.AnswerText}} 
@@ -49,11 +55,9 @@
      			</div>
     		</div>
 		</div>
-		<button type="button" ng-click="saveAnswers()" class="btn btn-warning btn-lg">Submit</button>
 	</div>
-	
+		<button type="button" ng-click="saveAnswers()" class="btn btn-warning btn-lg">Submit</button>
 </body>
-
 
 
 
