@@ -1,63 +1,75 @@
-<header ng-include="'partials/nav.html'"></header>
-
-<!--<div ng-repeat="item in survey">
-	<div>
-		<div>{{ item.QuestionList[0]}}</div>
-		
-		<!--<div> {{ item.QuestionList.AnswerList.AnswerText }}</div>		
-	</div>
-</div>-->
-<body>
+<div ng-if="!results">
 	<div class="container">
-	<div class="well bs-component">
-		<h3>What is your age?</h3>
-		<div class="row">
-			<form id="optionsRadiosAge" class="form-horizontal">
-			<fieldset>
-				<div class="radio col-sm-6 col-md-4" ng-repeat="age in ages"> 
-					<label class="thumbnail">
-						 <input type="radio" name="optionsRadios" value="{{age.AgeId}}" checked>
-							{{age.Display}}
-					</label>  
-				</div>
-			</fieldset>
-			</form>
+		<div class="well bs-component">
+			<h3>What is your age?</h3>
+			<div class="row">
+				<form id="optionsRadiosAge" class="form-horizontal">
+				<fieldset>
+					<div class="radio col-sm-6 col-md-4" ng-repeat="age in ages"> 
+						<label class="thumbnail">
+							 <input type="radio" name="optionsRadios" value="{{age.AgeId}}" checked>
+								{{age.Display}}
+						</label>  
+					</div>
+				</fieldset>
+				</form>
+			</div>
+			
+			<h3>What is your gender identity?</h3>
+			<div class="row">
+				<form id="optionsRadiosSex" class="form-horizontal">
+					<div class="radio col-sm-6 col-md-4" ng-repeat="sex in sexes">
+						<label class="thumbnail">
+							 <input type="radio" name="optionsRadios" value=" {{sex.SexId}}" checked>
+								{{sex.Display}}
+						</label>
+					</div>
+				</form>  
+			</div>
 		</div>
-		
-		<h3>What is your gender identity?</h3>
-		<div class="row">
-			<form id="optionsRadiosSex" class="form-horizontal">
-				<div class="radio col-sm-6 col-md-4" ng-repeat="sex in sexes">
-					<label class="thumbnail">
-						 <input type="radio" name="optionsRadios" value=" {{sex.SexId}}" checked>
-							{{sex.Display}}
-					</label>
-				</div>
-			</form>  
+
+
+		<div class="well bs-component">
+			<div class="row" ng-repeat="question in questions">
+				<div class="col-lg-6 control-label"><h4>{{ question.QuestionId }} {{ question.QuestionText}}</h4>
+					<div>
+						<form id="radioAnswer{{question.QuestionId}}" class="form-horizontal">
+	    					<div ng-repeat="answer in question.AnswerList">
+	            				<div class="radio col-sm-6 col-md-6">
+				 					<label class="thumbnail">
+				  						<input type="radio" name="radioAnswers"  value="{{ answer.AnswerId }}" checked>
+				   							{{ answer.AnswerId}} {{answer.AnswerText}} 
+				 					</label>
+								</div>              
+	     					</div>
+	     				</form>
+	     			</div>
+	    		</div>
+			</div>
 		</div>
+			<button type="button" ng-click="saveAnswers()" class="btn btn-warning btn-lg">Submit</button>
 	</div>
+</div>
 
 
-	<div class="well bs-component">
-		<div class="row" ng-repeat="question in questions">
+
+<div class="results" ng-if="results">
+	<h1>Results</h1>
+	<div class="row" ng-repeat="question in results">
 			<div class="col-lg-6 control-label"><h4>{{ question.QuestionId }} {{ question.QuestionText}}</h4>
 				<div>
 					<form id="radioAnswer{{question.QuestionId}}" class="form-horizontal">
-    					<div ng-repeat="answer in question.AnswerList">
+    					<div ng-repeat="answer in question.ChosenAnswers">
             				<div class="radio col-sm-6 col-md-6">
-			 					<label class="thumbnail">
+			 					<!-- <label class="thumbnail">
 			  						<input type="radio" name="radioAnswers"  value="{{ answer.AnswerId }}" checked>
 			   							{{ answer.AnswerId}} {{answer.AnswerText}} 
-			 					</label>
+			 					</label> -->
+			 					{{answer.AnswerText}} : {{answer.PercentChosen}}
 							</div>              
      					</div>
      				</form>
      			</div>
     		</div>
 		</div>
-	</div>
-		<button type="button" ng-click="saveAnswers()" class="btn btn-warning btn-lg">Submit</button>
-</body>
-
-
-
+</div>

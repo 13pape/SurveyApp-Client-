@@ -10,11 +10,15 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
   <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/customStyles.css">
+
 </head>
 
 <body ng-app="SurveyApp-Client-">
 
+  <!-- <div ng-include="'partials/nav.html'"></div> -->
   <div ng-view></div>
+
   
   <script src="lib/bower_components/jquery/dist/jquery.min.js"></script>
   <script src="lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -26,7 +30,7 @@
   
   <script src="app/factories/MainFactory.js"></script>
   <script src="app/controllers/MainController.js"></script>
-  
+  <script src="app/controllers/ResultController.js"></script>
 
 </body>
 </html>

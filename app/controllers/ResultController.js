@@ -5,11 +5,15 @@ SurveyAppClient.controller('ResultController',[
 	'$scope',
 	'MainFactory',
 
-	function ($http, $scope) {
+	function ($http, $scope, MainFactory) {
 
 		$scope.answerResultList = {};
 
 		$scope.createResult = function () {
+
+				AnswerId 
+                AnswerText 
+                PercentChosen
 
 			$http({
 				url:'http://localhost:50797/api/survey',

@@ -6,6 +6,9 @@ SurveyAppClient.controller('MainController',[
 	'MainFactory',
 
 	function ($http, $scope, MainFactory) {
+		$scope.results = null;
+
+
 		MainFactory.getsurvey().success(function (surv) {
 				console.log(surv);
 				$scope.ages = surv.AgeList;
@@ -53,6 +56,9 @@ SurveyAppClient.controller('MainController',[
 				data: answerObject,
 				dataType: JSON,
 				contentType: 'application/json; charset=utf-8'
+			}).success( (results) => {
+				console.log(results);
+				$scope.results = results;
 			});
 			/* 
 			answerObject = {
