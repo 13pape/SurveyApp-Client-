@@ -18,6 +18,10 @@ SurveyAppClient.controller('MainController',[
 				console.log($scope.ages);
 			});
 
+		$scope.resetAnswers = function () {
+			$scope.results = null;
+		}
+
 
 		$scope.saveAnswers = function () {
 			console.log("button");
