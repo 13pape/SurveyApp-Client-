@@ -11,9 +11,9 @@ SurveyAppClient.config(['$routeProvider',
 			templateUrl: 'partials/main.html',
 			controller: 'MainController'
 		})
-		.when('/create', {
-			templateUrl: 'partials/newFigurine.html',
-			controller: 'NewFigurineController'
+		.when('/result', {
+			templateUrl: 'partials/result.html',
+			controller: 'ResultController'
 		})
 		.when('/register', {
 			templateUrl: 'partials/register.html',
