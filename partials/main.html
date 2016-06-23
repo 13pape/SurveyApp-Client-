@@ -54,6 +54,8 @@
 
 
 <div class="results" ng-if="results">
+<div class="container">
+<div class="well bs-component">
 	<h1>Results</h1>
 	<div class="row" ng-repeat="question in results">
 			<div class="col-lg-6 control-label"><h4>{{ question.QuestionId }} {{ question.QuestionText}}</h4>
@@ -65,13 +67,16 @@
 			  						<input type="radio" name="radioAnswers"  value="{{ answer.AnswerId }}" checked>
 			   							{{ answer.AnswerId}} {{answer.AnswerText}} 
 			 					</label> -->
-			 					{{answer.AnswerText}} : {{answer.PercentChosen}}
+			 					 <div class="progress-bar progress-bar-success" style="width: {{answer.PercentChosen}}">{{answer.PercentChosen}}</div>  {{answer.AnswerText}} 
 							</div>              
      					</div>
      				</form>
      			</div>
     		</div>
-
+    		<br><br>
 		</div>
 		<button type="button" ng-click="resetAnswers()" class="btn btn-warning btn-lg">Survey</button>
 </div>
+</div>
+</div>
+
